@@ -94,6 +94,8 @@ td,th{
 
 img{
     max-width: 50rem;
+    min-width: 20rem;
+    flex:1 1 50rem;
 }
 .images{
     display: flex;
