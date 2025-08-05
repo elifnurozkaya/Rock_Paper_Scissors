@@ -24,10 +24,11 @@ body{
     display: flex;
     flex-direction: column;
     
-    max-width:45rem;
+    max-width:50rem;
     min-width: 30rem;
     min-height: 40rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     padding:2rem;
 }
     
@@ -91,3 +92,10 @@ td,th{
     border:0.2rem solid white;
 }
 
+img{
+    max-width: 50rem;
+}
+.images{
+    display: flex;
+   
+}

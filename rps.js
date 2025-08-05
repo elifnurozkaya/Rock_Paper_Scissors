@@ -1,86 +1,162 @@
-console.log("Welcome the game!!");
-let computersChoice;
-let usersChoice;
-let usersPoints = 0;
-let computersPoints = 0;
-let controller = 0;
+
+const choices = document.querySelector(".choices");
+const control = document.querySelector(".control");
+const image = document.querySelector("img");
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+const images = document.querySelector(".images");
+const usersScore = document.querySelector(".usersScore");
+let computersScore = document.querySelector(".computersScore");
+let secondImg = document.createElement("img");
+
+let userChoice;
+let computerChoice;
 let rand;
-let draw =0;
+let final;
+let cs = Number(computersScore.textContent) ;
+let us = Number(usersScore.textContent) ;
 
-while(controller == 0){
-    rand = Math.random();
-    
-    if(rand<=0.33)
-        computersChoice = "Rock";
-    else if(rand<=0.66)
-        computersChoice = "Paper";
-    else
-        computersChoice = "Scissors";
 
-    usersChoice = prompt("Please enter a letter (Rock(r)-Paper(p)-Scissors(s)) : ");
-
-    if(usersChoice == 'R' || usersChoice == 'r'){
-        if(computersChoice == 'Rock'){
-            
-            draw++;
-        }
-        else if(computersChoice == 'Paper'){
-            
-            computersPoints++;
-        }
-        else if(computersChoice == 'Scissors'){
-            
-            usersPoints++;
-        }
-    }
-    else if(usersChoice == 'S' || usersChoice == 's'){
-        if(computersChoice == "Rock"){
-            
-            computersPoints++;
-        }
-        else if(computersChoice == 'Paper'){
-            
-            usersPoints++;
-        }
-        else if(computersChoice == 'Scissors'){
-            
-            draw++;
-        }
-    }
-    else if(usersChoice == 'P' || usersChoice == 'p'){
-        if(computersChoice == 'Rock'){
-            
-            usersPoints++;
-        }
-        else if(computersChoice == 'Paper'){
-            
-            draw++;
-        }
-        else if(computersChoice == 'Scissors'){
-            
-            computersPoints++;
-        }
+ //start-stop button 
+control.addEventListener("click",function (){
+    if(control.textContent == "Stop the Game"){
+        control.textContent = "Start the Game";
+        image.src ="img/default.png";
+        computersScore.textContent = "0";
+        usersScore.textContent = "0";
+        us = 0;
+        cs = 0;
         
-    }}
+    
+    }else{
+        control.textContent = "Stop the Game";
+        image.src ="img/choice.png";
+    }
+})
 
-    // console.log(`Your choice is: ${usersChoice}\n`);
-    // console.log(`Computers choice is: ${computersChoice}\n`);
+
+    rock.addEventListener("click",()=>{
+        if(control.textContent === "Stop the Game"){
+            image.src = "img/rock.png";
+
+            userChoice = "r";
+            updateComputerChoice();
+            setTimeout(function (){images.appendChild(secondImg);},1000);
+            setTimeout(function (){images.removeChild(secondImg);},3000);
+
+            setTimeout(scoreScreen,3000);
+
+
+            setTimeout(function (){image.src = final;},3000);
+            setTimeout(function (){image.src = "img/choice.png";},4000);
+        }
+    })
+
+    paper.addEventListener("click",()=>{
+        if(control.textContent === "Stop the Game"){
+            userChoice = "p";
+            image.src = "img/paper.png";
+            updateComputerChoice();
+            setTimeout(function (){images.appendChild(secondImg);},1000);
+            setTimeout(function (){images.removeChild(secondImg);},3000);
+
+            setTimeout(scoreScreen,3000);
+
+            setTimeout(function (){image.src = final;},3000);
+            setTimeout(function (){image.src = "img/choice.png";},4000);
+            
+            
+            
+        }
+    })
+
+    scissors.addEventListener("click",()=>{
+        if(control.textContent === "Stop the Game"){
+            userChoice = "s";
+            image.src = "img/scissors.png";
+            updateComputerChoice();
+            setTimeout(function (){images.appendChild(secondImg);},1000);
+            setTimeout(function (){images.removeChild(secondImg);},3000);
+
+            setTimeout(scoreScreen,3000);
+
+
+            setTimeout(function (){image.src = final;},3000);
+            setTimeout(function (){image.src = "img/choice.png";},4000);
+        }
+    })
+
+
+    
+    
     
 
-    // console.log(`\nYou: ${usersPoints}\n`);
-    // console.log(`Computer: ${computersPoints}\n`);
-    // console.log(`Draws: ${draw}\n\n`);
-
-    // let anotherRound = prompt("Another round?(y/n) ");
-    // if( anotherRound == "n")
-    //     controller++;
+     
 
 
 
-// }
-// if(usersPoints>computersPoints)
-//         console.log("You won!");
-//     else if(usersPoints<computersPoints)
-//         console.log("You lost.");
-//     else
-//         console.log("It's a draw.");
+function updateComputerChoice(){
+rand = Math.floor(Math.random()*3);
+
+
+if(rand == 0){
+    computerChoice = "r";
+    secondImg.src = "img/rock.png";
+}else if(rand == 1){
+    computerChoice = "p";
+    secondImg.src = "img/paper.png";
+}else if(rand == 2){
+    computerChoice = "s";
+    secondImg.src = "img/scissors.png";
+}
+
+}
+
+function scoreScreen(){
+    if(userChoice == "r"){
+        if(computerChoice == "p"){
+            cs++;
+            computersScore.textContent = cs;
+            final = "img/lost.png";
+        }
+        else if(computerChoice == "s"){
+            us++;
+            usersScore.textContent = us;
+            final = "img/won.png";
+         }
+        else 
+            final = "img/draw.png";
+    }
+    else if(userChoice == "s"){
+        if(computerChoice == "p"){
+            us++;
+            usersScore.textContent = us;
+            final = "img/won.png";
+        }
+        else if(computerChoice == "r"){
+            cs++;
+            computersScore.textContent = cs;
+            final = "img/lost.png";
+        }
+        else 
+            final = "img/draw.png";
+    }    
+    else if(userChoice == "p"){
+        if(computerChoice == "s"){
+            cs++;
+            computersScore.textContent = cs;
+            final = "img/lost.png";
+        }
+        else if(computerChoice == "r"){
+            us++;
+            usersScore.textContent = us;
+            final = "img/won.png";
+        }
+        else 
+            final = "img/draw.png";
+    }
+}
+
+
+
