@@ -61,26 +61,26 @@ while(controller == 0){
             computersPoints++;
         }
         
-    }
+    }}
 
-    console.log(`Your choice is: ${usersChoice}\n`);
-    console.log(`Computers choice is: ${computersChoice}\n`);
+    // console.log(`Your choice is: ${usersChoice}\n`);
+    // console.log(`Computers choice is: ${computersChoice}\n`);
     
 
-    console.log(`\nYou: ${usersPoints}\n`);
-    console.log(`Computer: ${computersPoints}\n`);
-    console.log(`Draws: ${draw}\n\n`);
+    // console.log(`\nYou: ${usersPoints}\n`);
+    // console.log(`Computer: ${computersPoints}\n`);
+    // console.log(`Draws: ${draw}\n\n`);
 
-    let anotherRound = prompt("Another round?(y/n) ");
-    if( anotherRound == "n")
-        controller++;
+    // let anotherRound = prompt("Another round?(y/n) ");
+    // if( anotherRound == "n")
+    //     controller++;
 
 
 
-}
-if(usersPoints>computersPoints)
-        console.log("You won!");
-    else if(usersPoints<computersPoints)
-        console.log("You lost.");
-    else
-        console.log("It's a draw.");
+// }
+// if(usersPoints>computersPoints)
+//         console.log("You won!");
+//     else if(usersPoints<computersPoints)
+//         console.log("You lost.");
+//     else
+//         console.log("It's a draw.");
